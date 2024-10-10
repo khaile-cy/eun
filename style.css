@@ -1,0 +1,387 @@
+html,
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    background: #fbd7c265;    
+    background-image: linear-gradient(120deg, var(--bg-gray) 40%, var(--bg-peach) calc(40% + 2px));
+}
+
+main {
+    position: absolute;
+    padding: 2rem;
+    z-index: 1;
+    pointer-events: none;
+}
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.scene {
+    height: 100%;
+    width: 100%;
+    perspective: 3000px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scene * {
+    transform-style: preserve-3d;
+}
+
+.cake {
+    position: absolute;
+}
+
+.cake__slice {
+    --length: 300px;
+    --height: 300px;
+    --angle: 30deg;
+    height: var(--height);
+    width: var(--length);
+    transform-origin: 0 50%;
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+}
+
+.cake__slice__side {
+    width: var(--length);
+    height: var(--height);
+    position: absolute;
+    transform-origin: left;
+
+    background: url(picsmo/Screenshot\ 2024-10-10\ 013908.png);
+    background-size:contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.cake__slice__side:nth-of-type(1) {
+    transform: rotateX(-90deg) rotateY(calc(var(--angle) / 2));
+    filter: brightness(1.02);
+}
+
+.cake__slice__side:nth-of-type(2) {
+    transform: rotateX(-90deg) rotateY(calc(-1 * var(--angle) / 2));
+    filter: brightness(85%);
+}
+
+.cake__slice__top {
+    width: 100%;
+    transform: translate3d(0%, -50%, calc(var(--height) / 2));
+    transform-origin: 0 50%;
+    top: 50%;
+    fill: rgb(70, 38, 16);
+    position: absolute;
+}
+
+.cake__slice__behind {
+    height: var(--height);
+    width: 156px;
+    transform: translateX(-50%) rotateX(-90deg) rotateY(90deg) translateZ(290px);
+    transform-origin: 50% 50%;
+    position: absolute;
+    background-color: rgb(70, 38, 16);
+}
+
+[data-model] {
+    display: none;
+}
+.plane {
+    display: none;
+    position: absolute;
+    transform-origin: 50% 50%;
+    animation: cake__spin-in 3s;
+    transition: transform 0.5s ease-in-out;
+}
+
+.plane.spin-in {
+    display: block;
+    transform: rotateX(-24deg) rotateY(0deg) rotateX(90deg) translateZ(-150px);
+}
+
+.plane.finished {
+    transform: rotateZ(-15deg);
+    /* animation: cake__center-in 2s; */
+}
+
+.cake__slice__shadow {
+    fill: rgb(0, 0, 0, 0.5);
+    position: absolute;
+    transform-origin: 0 50%;
+    top: 50%;
+    transition: all 0.5s ease-in-out;
+}
+
+.cake__slice__shadow.hover {
+    fill: rgba(0, 0, 0, 0.2);
+}
+
+.cake__slice__shadow.spin-out {
+    fill: rgba(0, 0, 0, 0);
+}
+
+@keyframes cake__spin-in {
+    0% {
+        transform: rotateX(-24deg) rotateY(-300deg) rotateX(90deg) translateZ(800px);
+    }
+
+    100% {
+        transform: rotateX(-24deg) rotateY(0deg) rotateX(90deg) translateZ(-150px);
+    }
+}
+
+@keyframes cake__center-in {
+    0% {
+        transform: rotateX(-24deg) rotateY(0deg) rotateX(90deg) translateZ(-150px);
+    }
+
+    100% {
+        transform: rotateZ(-15deg);
+    }
+}
+
+@keyframes cake__slice__spin-out {
+    0% {
+        transform: rotateX(-24deg) rotateY(-300deg) rotateX(90deg) translateZ(800px);
+    }
+
+    100% {
+        transform: translateY(-50%) translateZ(300px) rotateZ(90deg) translateX(800px);
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.title__text, .title__logo {
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--mp-primary);
+    font-weight: 400;
+    margin: 0;
+}
+
+.title__logo {
+    width: 50px;
+    height: 50px;
+}
+
+
+.title__leading {
+    margin-top: 1rem;
+    font-size: 5rem;
+    color: var(--mp-primary);
+    font-weight: bold;
+}
+
+.card {
+    padding: 2rem;
+    background-color: var(--bg-gray);
+}
+
+.bday-card {
+    --height: 200px;
+    --width: 150px;
+    height: var(--height);
+    width: var(--width);
+    transform: translateX(-600px) rotateZ(0deg);
+}
+
+.bday-card__page, .bday-card__page__front {
+    position: absolute;
+    height: var(--height);
+    width: var(--width);
+    transform-origin: 0% 50%;
+    pointer-events: all;
+    user-select: none;
+}
+
+.bday-card__page__front {
+    position: absolute;
+    transform: rotateY(-15deg);
+    transition: transform 1s ease-in-out;
+}
+
+.bday-card:hover .bday-card__page__front {
+    transform: rotateY(-120deg);
+}
+
+.bday-card:hover .bday-card__back {
+    background-color: #ffe1e4;
+}
+
+.bday-card:hover .bday-card__page__front .bday-card__back {
+    background-color: #ffeef0;
+}
+
+.bday-card__image, .bday-card__back, .bday-card__text {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.bday-card__image, .bday-card__text {
+    transform: translateZ(0.1px);
+}
+
+.bday-card__back {
+    transition: background-color 1s ease-in-out;
+    background-color: #e1aab0;
+}
+
+.bday-card__text {
+    padding: 1rem;
+    font-size: .8rem;
+    box-sizing: border-box; 
+    color: #420b0b;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.bday-card__image>img {
+    width: 101%;
+    height: auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.cake-slice {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    margin: 10px;
+    display: inline-block;
+  }
+
+  #memory-book {
+    background-image: url(picsmo/scenery.jpg);
+    background-size: cover;
+    border-radius: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    padding: 20px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#memory-book[data-hidden] {
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+}
+
+#memory-book.show {
+    opacity: 1;
+    display: block;
+    pointer-events: auto;
+}
+#title-page {
+    text-align: center;
+    padding: 80px;
+    border-radius: 20px;
+    border: #333;
+    background: transparent;
+    backdrop-filter: blur(2px);
+}
+
+#title-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#title-page p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.memory-pages {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents overflow during transitions */
+}
+
+.memory-pages .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%; /* Start each page off-screen to the right */
+    transform-style: preserve-3d;
+    transition: left 0.5s ease-in-out; /* Smooth slide-in transition */
+    display: block; /* Ensure pages remain visible when transitioning */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.memory-pages .page.active {
+    display: block;
+    left: 0; /* Move active page into view */
+}
+
+.memory-pages .page.exit {
+    left: -100%; /* Move exiting page off-screen to the left */
+}
+
+.memory-pages img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 10px;
+    position: absolute; /* Positioning relative to its nearest positioned ancestor */
+    top: 0; /* Aligns the image to the top of the container */
+    right: 0; /* Aligns the image to the right of the container */
+    margin: 20px; /* Adds space around the image */
+}
+.memory-pages p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    color: #ffffff;
+
+    
+}
+
+#eme {
+    position: absolute;
+    object-fit: contain;
+    display: block;
+    width: 200px;
+    height: auto;
+}
+.button-container {
+    position: absolute;
+    bottom: -30px; /* Position 20px from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+#prev-page, #next-page {
+    flex: 1;
+}

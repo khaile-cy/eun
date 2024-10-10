@@ -1,0 +1,177 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ah bday mo!</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        [data-hidden] {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <main data-hidden>
+        <div class="title">
+            <img class="title__logo" src="picsmo/IMG_20240825_034545_738.jpg">
+            <h1 class="title__text">Ika's 19th Bday!</h1>
+        </div>
+        <p id="status">
+           Happy Birthday My Love! 
+        </p>
+        
+        <div class="scene">
+        </div>
+    </main>
+    <div id="scene" class="scene">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="plane">
+            <div class="cake">
+            </div>
+            <div class="bday-card">
+                <div class="bday-card__page__front">
+                    <div class="bday-card__image">
+                        <img src="picsmo/462540927_904815038171628_5302896828735669234_n.jpg">
+                    </div>
+                    <div class="bday-card__back"></div>
+                </div>
+              <div class="bday-card__page">
+                    <div class="bday-card__text">
+                        <div>
+                           Uhmm Hello Love
+                        </div>
+                        <div>
+                            Happy Birthday
+                        </div>
+                        <div>
+                            I love you so much
+                        </div>
+                    </div>
+                    <div class="bday-card__back"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-model="slice" class="cake__slice">
+        <div class="cake__slice__side"></div>
+        <div class="cake__slice__side"></div>
+        <svg class="cake__slice__top" height="158">
+            <polygon points="0,79 290,0 290,158" />
+        </svg>
+        <div class="cake__slice__behind"></div>
+    </div>
+
+    <svg data-model="slice-shadow" class="cake__slice__shadow" height="158">
+        <polygon points="0,79 290,0 290,158" />
+    </svg>
+
+    <div id="memory-book" data-hidden>
+        <div class="memory-pages">
+            <!-- Title Page -->
+            <div class="page" id="title-page">
+                <h1>Happy Birthday</h1>
+                <p><small>love</small></p>
+            </div>
+            <div class="page" id="page1">
+                <p><b>November, 2023 </b></p>
+                <p>Don't hate player</p>
+                <p>Hate the game</p>
+                <p>GRAHHH LOPIT</p>
+                <img src="picsmo/462377322_1788376458363044_5466282587322325304_n.jpg" alt="">
+            </div>
+            <div class="page" id="page2">
+                <p><b>December, 2023</b></p>
+                <p>Countdown to January</p>
+                <p>while watching fireworks</p>
+                <p>together</p>
+                <img src="picsmo/fireworks.jpg" alt="">
+            </div>
+            <div class="page" id="page3">
+                <p><b>January, 2024</b></p>
+                <p>A great year</p>
+                <p>to start it w ur</p>
+                <p>friends</p>
+                <img src="picsmo/wow.jpg" alt="">
+            </div>
+            <div class="page" id="page4">
+                <p><b>Febuary, 2024</b></p>
+                <p>GOJOO</p>
+                <p>Througout</p>
+                <p>The</p>
+                <p>Heaven</p>
+                <p>And</p>
+                <p>Earth</p>
+                <p>I</p>
+                <p>Alone am</p>
+                <p>The </p>
+                <p>Thankful</p>
+                <p>One</p>
+                <img src="picsmo/gojo.jpg" alt="">
+            </div>
+            <div class="page" id="page5">
+                <p><b>March, 2024</b></p>
+                <p>Hi Ganda</p>
+                <p>eatwell</p>
+                <img id="eme" src="picsmo/Screenshot 2024-03-19 011510.png" alt="">
+            </div>
+            <div class="page" id="page6">
+                <p><b>April, 2024</b></p>
+                <p>HALOOOOOO</p>
+                <p>;P</p>
+                <img src="picsmo/462535427_544625531515013_8985003572567496985_n (1).jpg" alt="">
+            </div>
+            <div class="page" id="page7">
+                <p><b>May, 2024</b></p>
+                <p>Happy Graduation, Love!</p>
+                <p>Congratss!</p>
+                <img src="picsmo/grad.jpg" alt="">
+            </div>
+            <div class="page" id="page8">
+                <p><b>June, 2024</b></p>
+                <p>Ihhhh SB</p>
+                <img src="picsmo/sb.jpg" alt="">
+            </div>
+            <div class="page" id="page9">
+                <p><b>ADVERTISEMENT</b></p>
+                <p>A poem for you</p>
+                <p>I wonder</p>
+                <p>If I can</p>
+                <p>Keep up with the</p>
+                <p>World</p>
+                <p>Without you</p>
+                <p>We may not have one in common, no two's are shaped alike.
+                    The third, because of that eye, we lack.
+                    In the fourth direction, there is a hope.
+                    The fifth lies at the heart.</p>
+            </div>
+            <div class="page" id="page10">
+                <p><b>October, 2024</b></p>
+                <p>D-day!</p>
+                <p>Happy Birthday, Love</p>
+                <p>May all of your dreams come true</p>
+                <p>With countless stars in the sky</p>
+                <p>Know that i'm here</p>
+                <p>For you.</p>
+                <p>I LOVE YOU</p>
+                <P>MWAAAAAAAAA</P>
+            </div>
+
+            
+        </div>
+        <div class="button-container">
+            <button id="next-page">Next Page</button> 
+            <button id="prev-page">Prev Page</button> 
+        </div>
+    </div>
+    
+    <audio autoplay hidden>
+     <source src="audio/NIKI   Take A Chance With Me  Official Lyric Video    YouTube.mp3" type="audio/mpeg">
+    </audio>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+
+</body>
+
+</html>
